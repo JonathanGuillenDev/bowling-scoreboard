@@ -271,14 +271,14 @@ async function animateRoll(pinsKnocked) {
 
     // Trigger sounds based on the roll outcome
     if (pinsKnocked === 10) {
-        playSound('assets/strike.wav', .5);
+        playSound('assets/strike.wav', .4);
     } else if (pinsKnocked === 0) {
-        playSound('assets/gutter.wav', .7);
+        playSound('assets/gutter.wav', .6);
     } else {
         const currentFrameRolls = game.getRollsForFrame(playerName, game.currentFrame);
         const totalPinsInFrame = currentFrameRolls.reduce((a, b) => a + b, 0) + pinsKnocked;
         if (totalPinsInFrame === 10 && currentFrameRolls.length > 0) {
-            playSound('assets/spare.wav', .7);
+            playSound('assets/spare.wav', .6);
         }
     }
     
@@ -286,7 +286,7 @@ async function animateRoll(pinsKnocked) {
 }
 
 function changePlayerCount(delta) {
-    playSound('assets/click.wav', .5);
+    playSound('assets/click.wav', .4);
     playerCount = Math.max(1, Math.min(4, playerCount + delta));
     document.getElementById('player-count').innerText = playerCount;
     
@@ -305,7 +305,7 @@ function changePlayerCount(delta) {
 
 // ... existing code ...
 document.getElementById('start-game-btn').addEventListener('click', () => {
-    playSound('assets/click.wav', .5);
+    playSound('assets/click.wav', .4);
     const nameInputs = document.querySelectorAll('.retro-input');
     const players = Array.from(nameInputs).map((input, i) => ({ name: input.value || `PLAYER ${i + 1}` }));
     
@@ -314,7 +314,7 @@ document.getElementById('start-game-btn').addEventListener('click', () => {
     document.getElementById('setup-screen').classList.remove('active');
     document.getElementById('game-screen').classList.add('active');
     
-    playMusic('assets/game-play.mp3', 0.3);
+    playMusic('assets/game-play.mp3', 0.2);
     initScoreboard();
     updateUI();
 });
@@ -328,8 +328,8 @@ document.getElementById('play-again-btn').addEventListener('click', () => {
 });
 
 function resetToSetup() {
-    playSound('assets/click.wav', .5);
-    playMusic('assets/title-screen.mp3', 0.85);
+    playSound('assets/click.wav', .4);
+    playMusic('assets/title-screen.mp3', 0.8);
     game = null;
     const screens = document.querySelectorAll('.screen');
     screens.forEach(s => s.classList.remove('active'));
@@ -423,7 +423,7 @@ function updateUI() {
 // Keypad implementation
 document.querySelectorAll('.key').forEach(key => {
     key.addEventListener('click', async (e) => {
-        playSound('assets/click.wav', .5);
+        playSound('assets/click.wav', .4);
         if (isAnimating) return;
         
         const val = parseInt(e.target.dataset.val);
@@ -437,7 +437,7 @@ document.querySelectorAll('.key').forEach(key => {
 });
 
 function endGame() {
-    playMusic('assets/golden-score.mp3', 0.95);
+    playMusic('assets/golden-score.mp3', 0.9);
     document.getElementById('game-screen').classList.remove('active');
     document.getElementById('game-over-screen').classList.add('active');
     
@@ -461,7 +461,7 @@ function endGame() {
 
 // Initial setup
 document.getElementById('run-game-btn').addEventListener('click', () => {
-    playMusic('assets/title-screen.mp3', 0.85);
+    playMusic('assets/title-screen.mp3', 0.8);
     const splash = document.getElementById('splash-screen');
     const setup = document.getElementById('setup-screen');
     
