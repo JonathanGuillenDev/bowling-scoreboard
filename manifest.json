@@ -1,0 +1,17 @@
+{
+  "short_name": "Bowling",
+  "name": "Bowling ScoreBoard",
+  "icons": [
+    {
+      "src": "assets/bowling-title-screen.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "start_url": "/index.html",
+  "background_color": "#000000",
+  "display": "standalone",
+  "scope": "/",
+  "theme_color": "#000000"
+}
