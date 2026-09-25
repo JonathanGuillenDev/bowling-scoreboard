@@ -271,14 +271,14 @@ async function animateRoll(pinsKnocked) {
 
     // Trigger sounds based on the roll outcome
     if (pinsKnocked === 10) {
-        playSound('assets/strike.wav', .8);
+        playSound('assets/strike.wav', .6);
     } else if (pinsKnocked === 0) {
         playSound('assets/gutter.wav', .8);
     } else {
         const currentFrameRolls = game.getRollsForFrame(playerName, game.currentFrame);
         const totalPinsInFrame = currentFrameRolls.reduce((a, b) => a + b, 0) + pinsKnocked;
         if (totalPinsInFrame === 10 && currentFrameRolls.length > 0) {
-            playSound('assets/spare.wav', .9);
+            playSound('assets/spare.wav', .8);
         }
     }
     
@@ -286,7 +286,7 @@ async function animateRoll(pinsKnocked) {
 }
 
 function changePlayerCount(delta) {
-    playSound('assets/click.wav', .8);
+    playSound('assets/click.wav', .6);
     playerCount = Math.max(1, Math.min(4, playerCount + delta));
     document.getElementById('player-count').innerText = playerCount;
     
@@ -305,7 +305,7 @@ function changePlayerCount(delta) {
 
 // ... existing code ...
 document.getElementById('start-game-btn').addEventListener('click', () => {
-    playSound('assets/click.wav', .8);
+    playSound('assets/click.wav', .6);
     const nameInputs = document.querySelectorAll('.retro-input');
     const players = Array.from(nameInputs).map((input, i) => ({ name: input.value || `PLAYER ${i + 1}` }));
     
@@ -314,7 +314,7 @@ document.getElementById('start-game-btn').addEventListener('click', () => {
     document.getElementById('setup-screen').classList.remove('active');
     document.getElementById('game-screen').classList.add('active');
     
-    playMusic('assets/game-play.mp3', 0.5);
+    playMusic('assets/game-play.mp3', 0.4);
     initScoreboard();
     updateUI();
 });
@@ -328,7 +328,7 @@ document.getElementById('play-again-btn').addEventListener('click', () => {
 });
 
 function resetToSetup() {
-    playSound('assets/click.wav', .8);
+    playSound('assets/click.wav', .6);
     playMusic('assets/title-screen.mp3', 0.9);
     game = null;
     const screens = document.querySelectorAll('.screen');
@@ -423,7 +423,7 @@ function updateUI() {
 // Keypad implementation
 document.querySelectorAll('.key').forEach(key => {
     key.addEventListener('click', async (e) => {
-        playSound('assets/click.wav', .8);
+        playSound('assets/click.wav', .6);
         if (isAnimating) return;
         
         const val = parseInt(e.target.dataset.val);
